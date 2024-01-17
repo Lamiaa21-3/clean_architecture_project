@@ -29,11 +29,20 @@ ThemeData getAppTheme() {
         splashColor: ColorManager.lightPrimary,
       ),
       elevatedButtonTheme: ElevatedButtonThemeData(
-          style: ElevatedButton.styleFrom(
-        textStyle:
-            getRegularStyle(color: ColorManager.white, fontSize: FontSize.s17),
-            primary: ColorManager.primary,shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(AppSize.s12),
-          )
-      )));
+        style: ElevatedButton.styleFrom(
+            textStyle: getRegularStyle(
+                color: ColorManager.white, fontSize: FontSize.s17),
+            primary: ColorManager.primary,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(AppSize.s12),
+            )),
+      ),
+      textTheme: TextTheme(
+        headline1: getSemiBoldStyle(
+            color: ColorManager.darkGrey, fontSize: FontSize.s16),
+        titleMedium: getMediumStyle(color: ColorManager.lightGrey,fontSize: FontSize.s14),
+        bodySmall: getRegularStyle(color: ColorManager.grey1),
+        bodyLarge: getRegularStyle(color: ColorManager.grey),
+        displayLarge: getLightStyle(color: ColorManager.white,fontSize: FontSize.s20),
+      ));
 }

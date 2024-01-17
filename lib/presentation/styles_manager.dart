@@ -8,7 +8,10 @@ TextStyle _getTexStyle(double fontSize, FontWeight fontWeight, Color color) {
       color: color,
       fontFamily: FontsConstants.fontFamily);
 }
-
+TextStyle getLightStyle(
+    {double fontSize = FontSize.s14, required Color color}) {
+  return _getTexStyle(fontSize, FontsWeigthManager.ligth, color);
+}
 TextStyle getRegularStyle(
     {double fontSize = FontSize.s14, required Color color}) {
   return _getTexStyle(fontSize, FontsWeigthManager.regular, color);
