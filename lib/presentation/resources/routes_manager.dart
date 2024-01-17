@@ -6,6 +6,7 @@ import 'package:clean_arichtecture_project/presentation/forget_password/forget_p
 import 'package:clean_arichtecture_project/presentation/login/login_view.dart';
 import 'package:clean_arichtecture_project/presentation/main/main_view.dart';
 import 'package:clean_arichtecture_project/presentation/register/register_view.dart';
+import 'package:clean_arichtecture_project/presentation/resources/string_manager.dart';
 import 'package:clean_arichtecture_project/presentation/splash/splash_view.dart';
 import 'package:clean_arichtecture_project/presentation/store_details/store_details_view.dart';
 import 'package:flutter/cupertino.dart';
@@ -45,10 +46,10 @@ class RouteGenerator {
   static Route<dynamic> unDefineRoute (){
     return MaterialPageRoute(builder: ((context) => Scaffold(
       appBar: AppBar(
-        title: Text('no route found '),
+        title: const Text(AppStrings.noRouteFound),
       ),
       body: const Center(
-        child: Text('no route found'),
+        child: Text(AppStrings.noRouteFound),
       ),
     )));
   }
