@@ -44,5 +44,33 @@ ThemeData getAppTheme() {
         bodySmall: getRegularStyle(color: ColorManager.grey1),
         bodyLarge: getRegularStyle(color: ColorManager.grey),
         displayLarge: getLightStyle(color: ColorManager.white,fontSize: FontSize.s20),
-      ));
+      ),
+    inputDecorationTheme: InputDecorationTheme(
+      contentPadding: EdgeInsets.all(AppPadding.p8),
+      hintStyle: getRegularStyle(color: ColorManager.grey,fontSize: FontSize.s14),
+      labelStyle: getMediumStyle(color: ColorManager.grey,fontSize: FontSize.s14),
+      errorStyle: getRegularStyle(color: ColorManager.error),
+      enabledBorder: OutlineInputBorder(
+        borderSide: BorderSide(color: ColorManager.primary,width: AppSize.s4),
+        borderRadius: BorderRadius.all(Radius.circular(AppSize.s8),),
+
+
+      ),
+      focusedBorder: OutlineInputBorder(
+        borderSide: BorderSide(color: ColorManager.grey,width: AppSize.s4),
+        borderRadius: BorderRadius.all(Radius.circular(AppSize.s8),),
+
+      ),
+      errorBorder: OutlineInputBorder(
+        borderSide: BorderSide(color: ColorManager.error,width: AppSize.s4),
+        borderRadius: BorderRadius.all(Radius.circular(AppSize.s8),),
+
+      ),
+      focusedErrorBorder: OutlineInputBorder(
+        borderSide: BorderSide(color: ColorManager.primary,width: AppSize.s4),
+        borderRadius: BorderRadius.all(Radius.circular(AppSize.s8),),
+
+      ),
+    )
+  );
 }
