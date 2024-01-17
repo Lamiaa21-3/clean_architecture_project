@@ -1,4 +1,4 @@
-import 'package:clean_arichtecture_project/presentation/fonts_manager.dart';
+import 'package:clean_arichtecture_project/presentation/resources/fonts_manager.dart';
 import 'package:flutter/material.dart';
 
 TextStyle _getTexStyle(double fontSize, FontWeight fontWeight, Color color) {

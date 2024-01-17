@@ -1,7 +1,7 @@
-import 'package:clean_arichtecture_project/presentation/color_manager.dart';
-import 'package:clean_arichtecture_project/presentation/fonts_manager.dart';
-import 'package:clean_arichtecture_project/presentation/styles_manager.dart';
-import 'package:clean_arichtecture_project/presentation/values_manager.dart';
+import 'package:clean_arichtecture_project/presentation/resources/color_manager.dart';
+import 'package:clean_arichtecture_project/presentation/resources/fonts_manager.dart';
+import 'package:clean_arichtecture_project/presentation/resources/styles_manager.dart';
+import 'package:clean_arichtecture_project/presentation/resources/values_manager.dart';
 import 'package:flutter/material.dart';
 
 ThemeData getAppTheme() {
