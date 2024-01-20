@@ -5,6 +5,7 @@
 import 'package:clean_arichtecture_project/presentation/forget_password/forget_password_view.dart';
 import 'package:clean_arichtecture_project/presentation/login/login_view.dart';
 import 'package:clean_arichtecture_project/presentation/main/main_view.dart';
+import 'package:clean_arichtecture_project/presentation/onBoarding/onBoarding_view.dart';
 import 'package:clean_arichtecture_project/presentation/register/register_view.dart';
 import 'package:clean_arichtecture_project/presentation/resources/string_manager.dart';
 import 'package:clean_arichtecture_project/presentation/splash/splash_view.dart';
@@ -16,6 +17,7 @@ class Routes{
   static const String splahRoute = "/";
   static const String loginRoute = "/login";
   static const String registerRoute = "/register";
+  static const String onBoardingRoute = "/onBoarding";
   static const String forgetPasswordRoute = "/forgetPassword";
   static const String mainRoute = "/main";
   static const String storeDetailsRoute = "/storeDetails";
@@ -29,6 +31,8 @@ class RouteGenerator {
     {
       case Routes.splahRoute :
         return MaterialPageRoute(builder: (context)=> const SplashView());
+      case Routes.onBoardingRoute :
+        return MaterialPageRoute(builder: (context)=>const OnBoardingView());
       case Routes.loginRoute :
         return MaterialPageRoute(builder: (context)=>const LoginView());
       case Routes.registerRoute :
