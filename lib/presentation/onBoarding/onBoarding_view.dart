@@ -1,10 +1,14 @@
 import 'package:clean_arichtecture_project/presentation/resources/color_manager.dart';
+import 'package:clean_arichtecture_project/presentation/resources/styles_manager.dart';
 import 'package:clean_arichtecture_project/presentation/resources/values_manager.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 import '../resources/image_manager.dart';
+import '../resources/routes_manager.dart';
 import '../resources/string_manager.dart';
 
 class OnBoardingView extends StatefulWidget {
@@ -15,6 +19,18 @@ class OnBoardingView extends StatefulWidget {
 }
 
 late final List<SliderObject> _list = _getSliderList();
+final pages = List.generate(
+    4,
+    (index) => Container(
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(16),
+            color: Colors.white,
+          ),
+          margin: EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+          child: Container(
+            height: 20,
+          ),
+        ));
 
 List<SliderObject> _getSliderList() => [
       SliderObject(AppStrings.onBoardingTitle1, AppStrings.onBoardingSubTitle1,
@@ -34,23 +50,101 @@ class _OnBoardingViewState extends State<OnBoardingView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: ColorManager.white,
+      appBar: AppBar(
+        elevation: 0,
         backgroundColor: ColorManager.white,
-        appBar: AppBar(
-          backgroundColor: ColorManager.white,
-          systemOverlayStyle: SystemUiOverlayStyle(
-            statusBarColor: ColorManager.white,
-            statusBarBrightness: Brightness.dark,
-          ),
+        systemOverlayStyle: SystemUiOverlayStyle(
+          statusBarColor: ColorManager.white,
+          statusBarBrightness: Brightness.dark,
         ),
-        body: PageView.builder(
-            controller: _pageController,
-            itemCount: _list.length,
-            onPageChanged: (index) {
-              setState(() {
-                _currentIndex = index;
-              });
-            },
-            itemBuilder: (context, index) {}));
+      ),
+      body: PageView.builder(
+          controller: _pageController,
+          itemCount: _list.length,
+          onPageChanged: (index) {
+            setState(() {
+              _currentIndex = index;
+            });
+          },
+          itemBuilder: (context, index) {
+            return OnBoardingPage(
+              sliderObject: _list[index],
+            );
+          }),
+      bottomSheet: Container(
+        color: ColorManager.primary,
+        height: 180,
+        child: Column(
+          children: [
+            Align(
+              alignment: Alignment.centerRight,
+              child: TextButton(
+                onPressed: () {
+                  Navigator.pushReplacementNamed(context, Routes.loginRoute);
+                },
+                child: const Text(
+                  AppStrings.skip,
+                  textAlign: TextAlign.end,
+                ),
+              ),
+            ),
+            _getBottomSheetWidget(),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _getBottomSheetWidget() {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        IconButton(
+          onPressed: () {
+            //go to previous slide
+            _pageController.animateToPage(_getPreviousIndex(),
+                duration: Duration(milliseconds: 300),
+                curve: Curves.bounceInOut);
+          },
+          icon: Icon(Icons.arrow_back_ios),
+        ),
+        // SmoothPageIndicator(
+        //   controller: _pageController,
+        //   count: pages.length,
+        //   effect: const WormEffect(
+        //     dotHeight: 10,
+        //     dotWidth: 10,
+        //     type: WormType.thinUnderground,
+        //   ),
+        // ),
+        IconButton(
+          onPressed: () {
+            //go to previous slide
+            _pageController.animateToPage(_getNextIndex(),
+                duration: Duration(milliseconds: 300),
+                curve: Curves.bounceInOut);
+          },
+          icon: Icon(Icons.arrow_forward_ios_outlined),
+        ),
+      ],
+    );
+  }
+
+  int _getPreviousIndex() {
+    int previousIndex = --_currentIndex;
+    if (previousIndex == -1) {
+      previousIndex = _list.length - 1;
+    }
+    return previousIndex;
+  }
+
+  int _getNextIndex() {
+    int nextIndex = ++_currentIndex;
+    if (nextIndex == _list.length) {
+      nextIndex = 0;
+    }
+    return nextIndex;
   }
 }
 
@@ -69,7 +163,7 @@ class OnBoardingPage extends StatelessWidget {
           child: Text(
             sliderObject.title,
             textAlign: TextAlign.center,
-            style: Theme.of(context).textTheme.displayLarge,
+            style: getRegularStyle(color: Colors.black),
           ),
         ),
         Padding(
@@ -77,9 +171,10 @@ class OnBoardingPage extends StatelessWidget {
           child: Text(
             sliderObject.subTitle,
             textAlign: TextAlign.center,
-            style: Theme.of(context).textTheme.displayLarge,
+            style: getRegularStyle(color: Colors.black),
           ),
         ),
+        SvgPicture.asset(sliderObject.image),
       ],
     );
   }

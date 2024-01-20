@@ -12,4 +12,5 @@ class AppStrings {
       "Tut app is awesome flutter application using clean architecture  #3";
   static const String onBoardingSubTitle4 =
       "Tut app is awesome flutter application using clean architecture  #4";
+  static const String skip ='Skip';
 }
